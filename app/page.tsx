@@ -100,7 +100,7 @@ const grouped = useMemo(() => {
   });
 
   return acc;
-}, [builds]);
+}, []);
 
 const tierStyle = (tier: string): string => {
   const map = {
@@ -253,7 +253,7 @@ return (
           Email: <span className="text-white">{contactEmail}</span>
         </p>
 
-        <form name="contact" method="POST" data-netlify="true" className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 md:p-6 space-y-4">
+        <form name="contact" method="POST" className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 md:p-6 space-y-4">
           <input type="hidden" name="form-name" value="contact" />
 
           <input className="w-full p-3 bg-zinc-800 rounded-lg" name="name" placeholder="Name" />
