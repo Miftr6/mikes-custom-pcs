@@ -37,7 +37,7 @@ export default function PCBuilderWebsite() {
       storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
       notes:
-        "Cooler is a Thermalright Peerless Assassin 120 SE 66.17 CFM CPU Cooler",
+        "CPU cooler is a Thermalright Peerless Assassin 120 SE 66.17 CFM CPU Cooler",
       platform: "AM5",
     },
     {
