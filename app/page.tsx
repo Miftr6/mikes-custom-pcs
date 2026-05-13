@@ -122,7 +122,7 @@ export default function PCBuilderWebsite() {
     <div className="min-h-screen bg-black text-white">
       {/* Top Bar */}
       <div className="bg-blue-600 text-center text-sm py-2 font-semibold px-2">
-        Custom Built Gaming PCs • 24–48 Hour Build Time • Professional Assembly Included
+        Custom Built Gaming PCs • 24–48 Hour Build Time • All Prices Include Professional Assembly Labor • Shipping Calculated Separately Based on Location
       </div>
 
       {/* Header */}
