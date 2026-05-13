@@ -247,25 +247,25 @@ return (
       </section>
 
       {/* Contact */}
-      <section id="contact" className="max-w-3xl mx-auto px-4 md:px-6 pb-20 md:pb-24">
-        <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">Request a Custom PC</h3>
-        <p className="text-zinc-400 text-center mb-8 text-sm md:text-base">
-          Email: <span className="text-white">{contactEmail}</span>
-        </p>
+      <section
+  id="contact"
+  className="max-w-3xl mx-auto px-4 md:px-6 pb-20 md:pb-24 text-center"
+>
+  <h3 className="text-2xl md:text-3xl font-bold mb-6">
+    Request a Custom PC
+  </h3>
 
-        <form name="contact" method="POST" className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 md:p-6 space-y-4">
-          <input type="hidden" name="form-name" value="contact" />
+  <p className="text-zinc-400 mb-4 text-sm md:text-base">
+    Email me directly for quotes, custom builds, and availability.
+  </p>
 
-          <input className="w-full p-3 bg-zinc-800 rounded-lg" name="name" placeholder="Name" />
-          <input className="w-full p-3 bg-zinc-800 rounded-lg" name="email" placeholder="Email" />
-          <input className="w-full p-3 bg-zinc-800 rounded-lg" name="budget" placeholder="Budget" />
-         <textarea className="w-full p-3 bg-zinc-800 rounded-lg" name="message" placeholder="What do you want built?" rows={5} />
-
-          <button className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-semibold">
-            Send Request
-          </button>
-        </form>
-      </section>
+  <a
+    href={`mailto:${contactEmail}`}
+    className="inline-block bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg font-semibold"
+  >
+    Email Mike
+  </a>
+</section>
 
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-8 text-center text-[11px] md:text-xs text-zinc-500">
