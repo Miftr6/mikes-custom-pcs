@@ -3,153 +3,132 @@
 import { useMemo } from "react";
 
 export default function PCBuilderWebsite() {
-  const contactEmail = "custompcbymike@gmail.com";
-
   const builds = [
     {
       name: "AM4 Air Cooled",
       price: 1500,
-      cpu: "AMD Ryzen 7 5700G 8-Core",
-      gpu: "ASRock Challenger OC Radeon RX 7600 8GB",
-      ram: "32GB Corsair Vengeance LPX DDR4-3200",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB Video Card",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200 CL16",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Noctua NH-D15 chromax.black",
+      notes: "Noctua NH-D15 chromax.black CPU Cooler",
       platform: "AM4",
-      graphics: "AMD",
-      coolingType: "Air Cooling",
-      target: "1080p / 1440p Gaming",
+      tier: "Air Cooled",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM4 AIO",
       price: 1450,
-      cpu: "AMD Ryzen 7 5700G 8-Core",
-      gpu: "ASRock Challenger OC Radeon RX 7600 8GB",
-      ram: "32GB Corsair Vengeance LPX DDR4-3200",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB Video Card",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200 CL16",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Cooler Master MasterLiquid 240L ARGB",
+      notes: "Cooler Master MasterLiquid 240L Core ARGB",
       platform: "AM4",
-      graphics: "AMD",
-      coolingType: "240mm AIO",
-      target: "1080p / 1440p Gaming",
+      tier: "AIO",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM5 Air Cooled",
       price: 1700,
-      cpu: "AMD Ryzen 7 7700 8-Core",
-      gpu: "ASRock Challenger OC Radeon RX 7600 8GB",
-      ram: "32GB G.Skill Flare X5 DDR5-6000",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB Video Card",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000 CL36",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Thermalright Peerless Assassin 120 SE",
+      notes: "Thermalright Peerless Assassin 120 SE",
       platform: "AM5",
-      graphics: "AMD",
-      coolingType: "Air Cooling",
-      target: "1440p Gaming",
+      tier: "Air Cooled",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM5 AIO",
       price: 1750,
-      cpu: "AMD Ryzen 7 7700 8-Core",
-      gpu: "ASRock Challenger OC Radeon RX 7600 8GB",
-      ram: "32GB G.Skill Flare X5 DDR5-6000",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB Video Card",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000 CL36",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Cooler Master MasterLiquid 240L ARGB",
+      notes: "Cooler Master MasterLiquid 240L Core ARGB",
       platform: "AM5",
-      graphics: "AMD",
-      coolingType: "240mm AIO",
-      target: "1440p Gaming",
+      tier: "AIO",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM4 Air Cooled Nvidia GPU",
       price: 2050,
-      cpu: "AMD Ryzen 7 5700G 8-Core",
-      gpu: "Gigabyte Gaming OC RTX 5060 Ti 16GB",
-      ram: "32GB Corsair Vengeance LPX DDR4-3200",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC RTX 5060 Ti 16GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200 CL16",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Noctua NH-D15 chromax.black",
+      notes: "Noctua NH-D15 chromax.black CPU Cooler",
       platform: "AM4",
-      graphics: "NVIDIA",
-      coolingType: "Air Cooling",
-      target: "1440p High Refresh",
+      tier: "NVIDIA",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM4 AIO Nvidia GPU",
       price: 2000,
-      cpu: "AMD Ryzen 7 5700G 8-Core",
-      gpu: "Gigabyte Gaming OC RTX 5060 Ti 16GB",
-      ram: "32GB Corsair Vengeance LPX DDR4-3200",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC RTX 5060 Ti 16GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200 CL16",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Cooler Master MasterLiquid 240L ARGB",
+      notes: "Cooler Master MasterLiquid 240L Core ARGB",
       platform: "AM4",
-      graphics: "NVIDIA",
-      coolingType: "240mm AIO",
-      target: "1440p High Refresh",
+      tier: "NVIDIA AIO",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM5 Air Cooled Nvidia GPU",
       price: 2150,
-      cpu: "AMD Ryzen 7 7700 8-Core",
-      gpu: "Gigabyte Gaming OC RTX 5060 Ti 16GB",
-      ram: "32GB G.Skill Flare X5 DDR5-6000",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC RTX 5060 Ti 16GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000 CL36",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Thermalright Peerless Assassin 120 SE",
+      notes: "Thermalright Peerless Assassin 120 SE",
       platform: "AM5",
-      graphics: "NVIDIA",
-      coolingType: "Air Cooling",
-      target: "1440p Ultra Gaming",
+      tier: "NVIDIA",
+      turnaround: "24–48h Build Time",
     },
     {
       name: "AM5 AIO Nvidia GPU",
       price: 2250,
-      cpu: "AMD Ryzen 7 7700 8-Core",
-      gpu: "Gigabyte Gaming OC RTX 5060 Ti 16GB",
-      ram: "32GB G.Skill Flare X5 DDR5-6000",
-      storage: "Kingston NV3 1TB NVMe PCIe 4.0 SSD",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC RTX 5060 Ti 16GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000 CL36",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
       case: "Lian Li Vector V100R ATX Mid Tower",
-      cooling: "Cooler Master MasterLiquid 240L ARGB",
+      notes: "Cooler Master MasterLiquid 240L Core ARGB",
       platform: "AM5",
-      graphics: "NVIDIA",
-      coolingType: "240mm AIO",
-      target: "1440p Ultra Gaming",
+      tier: "High End",
+      turnaround: "24–48h Build Time",
     },
   ];
 
   const grouped = useMemo(() => {
-    return builds.reduce((acc: Record<string, typeof builds>, build) => {
-      if (!acc[build.platform]) {
-        acc[build.platform] = [];
-      }
-
-      acc[build.platform].push(build);
+    return builds.reduce((acc: Record<string, typeof builds>, b) => {
+      if (!acc[b.platform]) acc[b.platform] = [];
+      acc[b.platform].push(b);
       return acc;
     }, {});
   }, []);
 
-  const badgeColor = (graphics: string) => {
-    if (graphics === "NVIDIA") {
-      return "bg-green-500/10 text-green-300 border border-green-500/30";
-    }
-
-    return "bg-red-500/10 text-red-300 border border-red-500/30";
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Top Bar */}
-      <div className="bg-blue-600 text-center text-xs py-2 font-semibold px-2">
-        Custom Gaming PCs • 24–48 Hour Build Time • Professionally Built & Tested
+      <div className="bg-blue-600 text-center text-sm py-2 font-semibold px-2">
+        Custom Built Gaming PCs • 24–48 Hour Build Time • Professional Assembly Included
       </div>
 
       {/* Header */}
       <header className="sticky top-0 z-50 bg-zinc-950/90 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-bold tracking-tight">
             Mike's Custom PCs
           </h1>
 
@@ -171,147 +150,93 @@ export default function PCBuilderWebsite() {
             href="#contact"
             className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold"
           >
-            Request Build
+            Build My PC
           </a>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <section className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+          <h2 className="text-5xl font-bold leading-tight">
             Custom Gaming PCs Built Fast
           </h2>
 
-          <p className="text-zinc-400 mt-5 text-base">
-            Professionally assembled gaming systems built with premium parts,
-            clean cable management, and real-world gaming performance in mind.
+          <p className="text-zinc-400 mt-4">
+            Professionally assembled gaming PCs with premium components,
+            clean cable management, and stress testing included.
           </p>
 
-          <div className="mt-7 flex flex-col sm:flex-row gap-4">
+          <div className="mt-6 flex gap-3">
             <a
               href="#am5"
-              className="bg-white text-black px-5 py-3 rounded-lg font-semibold text-center"
+              className="bg-white text-black px-4 py-2 rounded-lg font-semibold"
             >
-              Browse Builds
+              Shop Builds
             </a>
 
             <a
               href="#contact"
-              className="border border-zinc-700 px-5 py-3 rounded-lg text-center"
+              className="border border-zinc-600 px-4 py-2 rounded-lg"
             >
-              Get Custom Quote
+              Custom Quote
             </a>
           </div>
         </div>
 
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
-          <h3 className="font-bold text-lg mb-4">
-            Why Choose Mike's Custom PCs?
-          </h3>
+          <h3 className="font-semibold mb-2">Why choose us?</h3>
 
-          <ul className="space-y-3 text-zinc-400 text-sm">
-            <li>• 24–48 hour build turnaround</li>
-            <li>• Premium airflow-focused cases</li>
-            <li>• Stress tested before delivery</li>
-            <li>• Clean professional cable management</li>
-            <li>• Upgrade friendly component choices</li>
+          <ul className="text-sm text-zinc-400 space-y-2">
+            <li>• 24–48 hour assembly</li>
+            <li>• Stress-tested systems</li>
+            <li>• Clean cable management</li>
+            <li>• Upgrade-ready builds</li>
+            <li>• Premium cooling solutions</li>
           </ul>
         </div>
       </section>
 
       {/* Builds */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 pb-20">
+      <section className="max-w-7xl mx-auto px-4 pb-20">
         {["AM4", "AM5"].map((platform) => (
           <div key={platform} id={platform.toLowerCase()} className="mb-16">
-            <h3 className="text-3xl font-bold mb-8">
-              {platform} Builds
-            </h3>
+            <h3 className="text-3xl font-bold mb-6">{platform} Builds</h3>
 
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {grouped[platform]?.map((build, index) => (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {grouped[platform]?.map((b, i) => (
                 <div
-                  key={index}
-                  className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-blue-500 transition"
+                  key={i}
+                  className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 hover:border-blue-500 transition"
                 >
                   <div className="flex justify-between items-start gap-3">
-                    <h4 className="text-lg font-bold leading-tight">
-                      {build.name}
-                    </h4>
+                    <h4 className="font-bold text-lg">{b.name}</h4>
 
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${badgeColor(
-                        build.graphics
-                      )}`}
-                    >
-                      {build.graphics}
+                    <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">
+                      {b.tier}
                     </span>
                   </div>
 
-                  <div className="text-3xl font-bold text-blue-400 mt-4">
-                    ${build.price}
+                  <div className="text-blue-400 text-2xl font-bold mt-3">
+                    ${b.price}
                   </div>
 
-                  <div className="mt-5 space-y-3 text-sm text-zinc-300">
-                    <div>
-                      <span className="text-zinc-500">CPU:</span>
-                      <p>{build.cpu}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">GPU:</span>
-                      <p>{build.gpu}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">RAM:</span>
-                      <p>{build.ram}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">Storage:</span>
-                      <p>{build.storage}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">Cooling:</span>
-                      <p>{build.cooling}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">Case:</span>
-                      <p>{build.case}</p>
-                    </div>
-
-                    <div>
-                      <span className="text-zinc-500">Target:</span>
-                      <p>{build.target}</p>
-                    </div>
+                  <div className="text-sm text-zinc-300 mt-4 space-y-2">
+                    <p><strong>CPU:</strong> {b.cpu}</p>
+                    <p><strong>GPU:</strong> {b.gpu}</p>
+                    <p><strong>RAM:</strong> {b.ram}</p>
+                    <p><strong>Storage:</strong> {b.storage}</p>
+                    <p><strong>Case:</strong> {b.case}</p>
+                    <p><strong>Cooling:</strong> {b.notes}</p>
                   </div>
 
-                  <div className="mt-6 flex gap-2 flex-wrap">
-                    <span className="bg-zinc-800 text-xs px-2 py-1 rounded">
-                      {build.platform}
-                    </span>
-
-                    <span className="bg-zinc-800 text-xs px-2 py-1 rounded">
-                      {build.coolingType}
-                    </span>
-
-                    <span className="bg-zinc-800 text-xs px-2 py-1 rounded">
-                      32GB RAM
-                    </span>
-
-                    <span className="bg-zinc-800 text-xs px-2 py-1 rounded">
-                      1TB NVMe
-                    </span>
+                  <div className="text-sm mt-4 text-green-400">
+                    {b.turnaround}
                   </div>
 
                   <a
-                    href={`mailto:${contactEmail}?subject=${encodeURIComponent(
-                      build.name
-                    )}`}
-                    className="mt-6 block w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg text-center font-semibold"
+                    href="#contact"
+                    className="mt-5 block w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg text-center font-semibold"
                   >
                     Request This Build
                   </a>
@@ -325,30 +250,65 @@ export default function PCBuilderWebsite() {
       {/* Contact */}
       <section
         id="contact"
-        className="max-w-3xl mx-auto px-4 md:px-6 pb-24 text-center"
+        className="max-w-3xl mx-auto px-4 pb-24"
       >
-        <h3 className="text-3xl font-bold mb-6">
-          Need Something Custom?
+        <h3 className="text-3xl font-bold mb-6 text-center">
+          Request a Custom PC
         </h3>
 
-        <p className="text-zinc-400 mb-8">
-          Want different parts, RGB options, more storage, or a fully custom
-          gaming setup? Reach out directly and we’ll build something around your
-          budget and goals.
+        <p className="text-zinc-400 mb-8 text-center">
+          Send a build request directly through the website.
         </p>
 
-        <a
-          href={`mailto:${contactEmail}`}
-          className="inline-block bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl font-bold text-lg"
+        <form
+          action="https://formspree.io/f/mykovwyp"
+          method="POST"
+          className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4"
         >
-          Email Mike
-        </a>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white"
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white"
+          />
+
+          <input
+            type="text"
+            name="budget"
+            placeholder="Budget"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white"
+          />
+
+          <textarea
+            name="message"
+            placeholder="Tell me what kind of PC you want built..."
+            required
+            rows={6}
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-bold"
+          >
+            Send Request
+          </button>
+        </form>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-8 text-center text-xs text-zinc-500">
-        <p>All systems include professional assembly and testing.</p>
-        <p>Shipping and local delivery availability vary by location.</p>
+        <p>All builds include professional assembly & testing.</p>
+        <p>Shipping varies by location.</p>
       </footer>
     </div>
   );
