@@ -1,238 +1,372 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export default function PCBuilderWebsite() {
-  const contactEmail = "custompcbymike@gmail.com";
-
-  const FORM_ENDPOINT = "https://formspree.io/f/mykovwyp";
-
-  const [selectedBuild, setSelectedBuild] = useState<string | null>(null);
-
   const builds = [
     {
       name: "AM4 Air Cooled",
       price: 1500,
-      cpu: "AMD Ryzen 7 5700G",
-      gpu: "RX 7600 8GB",
-      ram: "32GB DDR4-3200",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Noctua NH-D15 Chromax Black 82.52 CFM CPU Cooler",
       platform: "AM4",
-      tier: "Entry",
-      notes: "Noctua NH-D15 Chromax Black"
     },
     {
       name: "AM4 AIO",
       price: 1450,
-      cpu: "AMD Ryzen 7 5700G",
-      gpu: "RX 7600 8GB",
-      ram: "32GB DDR4-3200",
-      storage: "1TB NVMe",
-      case: "",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Cooler Master MasterLiquid 240L Core ARGB Liquid CPU Cooler",
       platform: "AM4",
-      tier: "Entry Plus",
-      notes: "240mm AIO Cooler"
     },
     {
       name: "AM5 Air Cooled",
       price: 1700,
-      cpu: "Ryzen 7 7700",
-      gpu: "RX 7600 8GB",
-      ram: "32GB DDR5-6000",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "Cooler is a Thermalright Peerless Assassin 120 SE 66.17 CFM CPU Cooler",
       platform: "AM5",
-      tier: "Mid",
-      notes: "Peerless Assassin Cooler"
     },
     {
       name: "AM5 AIO",
       price: 1750,
-      cpu: "Ryzen 7 7700",
-      gpu: "RX 7600 8GB",
-      ram: "32GB DDR5-6000",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "ASRock Challenger OC Radeon RX 7600 8 GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Cooler Master MasterLiquid 240L Core ARGB Liquid CPU Cooler",
       platform: "AM5",
-      tier: "Mid Plus",
-      notes: "240mm AIO Cooler"
     },
     {
-      name: "AM4 Air Cooled Nvidia",
+      name: "AM4 Air Cooled Nvidia GPU",
       price: 2050,
-      cpu: "Ryzen 7 5700G",
-      gpu: "RTX 5060 Ti 16GB",
-      ram: "32GB DDR4-3200",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC GeForce RTX 5060 Ti 16 GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Noctua NH-D15 Chromax Black 82.52 CFM CPU Cooler",
       platform: "AM4",
-      tier: "Value Gaming",
-      notes: "Noctua NH-D15"
     },
     {
-      name: "AM4 AIO Nvidia",
+      name: "AM4 AIO Nvidia GPU",
       price: 2000,
-      cpu: "Ryzen 7 5700G",
-      gpu: "RTX 5060 Ti 16GB",
-      ram: "32GB DDR4-3200",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 5700G 3.8 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC GeForce RTX 5060 Ti 16 GB",
+      ram: "Corsair Vengeance LPX 32 GB DDR4-3200",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Cooler Master MasterLiquid 240L Core ARGB Liquid CPU Cooler",
       platform: "AM4",
-      tier: "Value Gaming",
-      notes: "240mm AIO Cooler"
     },
     {
-      name: "AM5 Air Cooled Nvidia",
+      name: "AM5 Air Cooled Nvidia GPU",
       price: 2150,
-      cpu: "Ryzen 7 7700",
-      gpu: "RTX 5060 Ti 16GB",
-      ram: "32GB DDR5-6000",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC GeForce RTX 5060 Ti 16 GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Thermalright Peerless Assassin 120 SE 66.17 CFM CPU Cooler",
       platform: "AM5",
-      tier: "Performance",
-      notes: "Peerless Assassin Cooler"
     },
     {
-      name: "AM5 AIO Nvidia",
+      name: "AM5 AIO Nvidia GPU",
       price: 2250,
-      cpu: "Ryzen 7 7700",
-      gpu: "RTX 5060 Ti 16GB",
-      ram: "32GB DDR5-6000",
-      storage: "1TB NVMe",
-      case: "Lian Li Vector V100R",
+      cpu: "AMD Ryzen 7 7700 3.6 GHz 8-Core Processor",
+      gpu: "Gigabyte GAMING OC GeForce RTX 5060 Ti 16 GB",
+      ram: "G.Skill Flare X5 32 GB DDR5-6000",
+      storage: "Kingston NV3 1TB NVMe PCIe 4.0",
+      case: "Lian Li Vector V100R ATX Mid Tower",
+      notes:
+        "CPU cooler is a Cooler Master MasterLiquid 240L Core ARGB Liquid CPU Cooler",
       platform: "AM5",
-      tier: "High End",
-      notes: "240mm AIO Cooler"
-    }
+    },
   ];
 
   const grouped = useMemo(() => {
-    const acc: Record<string, typeof builds> = {};
-    builds.forEach((b) => {
-      if (!acc[b.platform]) acc[b.platform] = [];
-      acc[b.platform].push(b);
-    });
-    return acc;
-  }, []);
+    return builds.reduce(
+      (acc: Record<string, typeof builds>, build) => {
+        if (!acc[build.platform]) {
+          acc[build.platform] = [];
+        }
 
-  const tierStyle = (tier: string) => {
-    const map: Record<string, string> = {
-      Entry: "bg-green-500/10 text-green-300",
-      "Entry Plus": "bg-green-400/10 text-green-200",
-      Mid: "bg-yellow-500/10 text-yellow-300",
-      "Mid Plus": "bg-yellow-400/10 text-yellow-200",
-      "Value Gaming": "bg-blue-500/10 text-blue-300",
-      Performance: "bg-purple-500/10 text-purple-300",
-      "High End": "bg-red-500/10 text-red-300",
-    };
-    return map[tier] || "bg-zinc-700 text-zinc-300";
-  };
+        acc[build.platform].push(build);
 
-  const sendBuildEmail = async (buildName: string) => {
-    await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+        return acc;
       },
-      body: JSON.stringify({
-        subject: `Build Request: ${buildName}`,
-        message: `Customer requested build: ${buildName}`,
-        build: buildName,
-      }),
-    });
-
-    alert("Request sent! I will email you back shortly.");
-  };
+      {}
+    );
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white">
-
       {/* Top Banner */}
-      <div className="bg-blue-600 text-center text-xs md:text-sm py-2 font-semibold px-2">
-        All prices include labor • Shipping varies by location and is calculated after order
+      <div className="bg-blue-600 text-center text-xs md:text-sm py-3 px-4 font-semibold">
+        All prices include labor and professional assembly • Shipping cost is
+        separate and varies by location
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-zinc-950/90 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between">
-          <h1 className="font-bold">Mike's Custom PCs</h1>
+      <header className="border-b border-zinc-800 bg-zinc-950 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <h1 className="text-2xl font-bold">
+            Mike&apos;s Custom Computers
+          </h1>
+
+          <a
+            href="#contact"
+            className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg font-semibold"
+          >
+            Custom Request
+          </a>
         </div>
       </header>
 
-      {/* Builds */}
-      <section className="max-w-7xl mx-auto px-4 py-10 space-y-10">
+      {/* Hero */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <h2 className="text-5xl font-bold mb-4">
+          Custom Built Gaming PCs
+        </h2>
 
-        {["AM4", "AM5"].map((platform) => (
-          <div key={platform}>
-            <h2 className="text-xl font-bold mb-4">{platform} Builds</h2>
+        <p className="text-zinc-400 max-w-2xl text-lg">
+          Professionally assembled gaming computers with clean cable management,
+          quality components, and fast turnaround times.
+        </p>
+      </section>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {grouped[platform]?.map((b, i) => (
-                <div key={i} className="bg-zinc-900 p-5 rounded-xl border border-zinc-800">
+      {/* AM4 Builds */}
+      <section className="max-w-7xl mx-auto px-6 pb-12">
+        <h3 className="text-3xl font-bold mb-8">AM4 Builds</h3>
 
-                  <div className="flex justify-between">
-                    <h3 className="font-semibold">{b.name}</h3>
-                    <span className={`text-xs px-2 py-1 rounded ${tierStyle(b.tier)}`}>
-                      {b.tier}
-                    </span>
-                  </div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {grouped.AM4?.map((b, i) => (
+            <div
+              key={i}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6"
+            >
+              <h4 className="text-2xl font-bold mb-2">{b.name}</h4>
 
-                  <p className="text-blue-400 font-bold mt-2">${b.price}</p>
+              <p className="text-blue-400 text-3xl font-bold mb-4">
+                ${b.price}
+              </p>
 
-                  <div className="text-xs text-zinc-400 mt-3 space-y-1">
-                    <p>CPU: {b.cpu}</p>
-                    <p>GPU: {b.gpu}</p>
-                    <p>RAM: {b.ram}</p>
-                    <p>Storage: {b.storage}</p>
-                    {b.case && <p>Case: {b.case}</p>}
-                    {b.notes && <p className="text-zinc-500">{b.notes}</p>}
-                  </div>
+              <div className="space-y-2 text-sm text-zinc-300">
+                <p>
+                  <span className="text-zinc-500">CPU:</span> {b.cpu}
+                </p>
 
-                  <button
-                    onClick={() => sendBuildEmail(b.name)}
-                    className="mt-4 w-full bg-blue-600 hover:bg-blue-500 py-2 rounded-lg text-sm"
-                  >
-                    Request This Build
-                  </button>
-                </div>
-              ))}
+                <p>
+                  <span className="text-zinc-500">GPU:</span> {b.gpu}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">RAM:</span> {b.ram}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">Storage:</span>{" "}
+                  {b.storage}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">Case:</span> {b.case}
+                </p>
+
+                <p className="text-zinc-400 pt-2">{b.notes}</p>
+              </div>
+
+              <form
+                action="https://formspree.io/f/mykovwyp"
+                method="POST"
+                className="mt-6 space-y-3"
+              >
+                <input
+                  type="hidden"
+                  name="Build Requested"
+                  value={b.name}
+                />
+
+                <input
+                  type="email"
+                  name="Customer Email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full p-3 bg-zinc-800 rounded-lg text-sm"
+                />
+
+                <textarea
+                  name="Customer Notes"
+                  placeholder="Questions or requests"
+                  rows={3}
+                  className="w-full p-3 bg-zinc-800 rounded-lg text-sm"
+                />
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-semibold"
+                >
+                  Request This Build
+                </button>
+              </form>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+
+      {/* AM5 Builds */}
+      <section className="max-w-7xl mx-auto px-6 pb-20">
+        <h3 className="text-3xl font-bold mb-8">AM5 Builds</h3>
+
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {grouped.AM5?.map((b, i) => (
+            <div
+              key={i}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6"
+            >
+              <h4 className="text-2xl font-bold mb-2">{b.name}</h4>
+
+              <p className="text-blue-400 text-3xl font-bold mb-4">
+                ${b.price}
+              </p>
+
+              <div className="space-y-2 text-sm text-zinc-300">
+                <p>
+                  <span className="text-zinc-500">CPU:</span> {b.cpu}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">GPU:</span> {b.gpu}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">RAM:</span> {b.ram}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">Storage:</span>{" "}
+                  {b.storage}
+                </p>
+
+                <p>
+                  <span className="text-zinc-500">Case:</span> {b.case}
+                </p>
+
+                <p className="text-zinc-400 pt-2">{b.notes}</p>
+              </div>
+
+              <form
+                action="https://formspree.io/f/mykovwyp"
+                method="POST"
+                className="mt-6 space-y-3"
+              >
+                <input
+                  type="hidden"
+                  name="Build Requested"
+                  value={b.name}
+                />
+
+                <input
+                  type="email"
+                  name="Customer Email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full p-3 bg-zinc-800 rounded-lg text-sm"
+                />
+
+                <textarea
+                  name="Customer Notes"
+                  placeholder="Questions or requests"
+                  rows={3}
+                  className="w-full p-3 bg-zinc-800 rounded-lg text-sm"
+                />
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-semibold"
+                >
+                  Request This Build
+                </button>
+              </form>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Custom Request */}
-      <section className="max-w-xl mx-auto px-4 py-16">
-        <h3 className="text-xl font-bold mb-4 text-center">Custom Build Request</h3>
+      <section
+        id="contact"
+        className="max-w-3xl mx-auto px-6 pb-24"
+      >
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+          <h3 className="text-3xl font-bold mb-4 text-center">
+            Request a Custom Build
+          </h3>
 
-        <form
-          action={FORM_ENDPOINT}
-          method="POST"
-          className="space-y-3 bg-zinc-900 p-6 rounded-xl border border-zinc-800"
-        >
-          <input name="name" placeholder="Name" className="w-full p-3 bg-zinc-800 rounded" />
-          <input name="email" placeholder="Email" className="w-full p-3 bg-zinc-800 rounded" />
-          <input name="budget" placeholder="Budget" className="w-full p-3 bg-zinc-800 rounded" />
-          <textarea
-            name="message"
-            placeholder="What do you want built?"
-            className="w-full p-3 bg-zinc-800 rounded"
-            rows={5}
-          />
+          <p className="text-zinc-400 text-center mb-8">
+            Need something different? Send a custom request.
+          </p>
 
-          <button className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded font-semibold">
-            Send Request
-          </button>
-        </form>
+          <form
+            action="https://formspree.io/f/mykovwyp"
+            method="POST"
+            className="space-y-4"
+          >
+            <input
+              type="hidden"
+              name="Build Requested"
+              value="Custom Build Request"
+            />
+
+            <input
+              type="email"
+              name="Customer Email"
+              placeholder="Your Email"
+              required
+              className="w-full p-3 bg-zinc-800 rounded-lg"
+            />
+
+            <textarea
+              name="Customer Notes"
+              placeholder="Tell me what you want built"
+              rows={5}
+              required
+              className="w-full p-3 bg-zinc-800 rounded-lg"
+            />
+
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-semibold"
+            >
+              Send Custom Request
+            </button>
+          </form>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer className="text-center text-xs text-zinc-500 py-10">
-        Built by Mike • Custom PC Builds
+      <footer className="border-t border-zinc-800 py-8 text-center text-zinc-500 text-sm">
+        <p>Professional assembly and testing included.</p>
+        <p>Shipping cost varies by location.</p>
       </footer>
-
     </div>
   );
 }
