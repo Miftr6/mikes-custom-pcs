@@ -91,29 +91,34 @@ export default function PCBuilderWebsite() {
     }
   ];
 
-  const grouped = useMemo(() => {
-    return builds.reduce((acc, b) => {
-      if (!acc[b.platform]) acc[b.platform] = [];
-      acc[b.platform].push(b);
-      return acc;
-    }, {});
-  }, [builds]);
+const grouped = useMemo(() => {
+  const acc: Record<string, typeof builds> = {};
 
-  const tierStyle = (tier) => {
-    const map = {
-      Entry: "bg-green-500/10 text-green-300",
-      "Entry Plus": "bg-green-400/10 text-green-200",
-      Mid: "bg-blue-500/10 text-blue-300",
-      "Mid Plus": "bg-blue-400/10 text-blue-200",
-      "Value Gaming": "bg-purple-500/10 text-purple-300",
-      Performance: "bg-yellow-500/10 text-yellow-300",
-      "High End": "bg-red-500/10 text-red-300"
-    };
-    return map[tier] || "bg-zinc-700 text-zinc-300";
+  builds.forEach((b) => {
+    if (!acc[b.platform]) acc[b.platform] = [];
+    acc[b.platform].push(b);
+  });
+
+  return acc;
+}, [builds]);
+
+const tierStyle = (tier: string): string => {
+  const map = {
+    Entry: "bg-green-500/10 text-green-300",
+    "Entry Plus": "bg-green-400/10 text-green-200",
+    Mid: "bg-yellow-500/10 text-yellow-300",
+    "Mid Plus": "bg-yellow-400/10 text-yellow-200",
+    "Value Gaming": "bg-blue-500/10 text-blue-300",
+    Performance: "bg-purple-500/10 text-purple-300",
+    "High End": "bg-red-500/10 text-red-300",
   };
 
-  return (
-    <div className="min-h-screen bg-black text-white">
+  const key = tier as keyof typeof map;
+  return map[key] || "bg-zinc-700 text-zinc-300";
+};
+
+return (
+  <div className="min-h-screen bg-black text-white">
 
       {/* Top Bar */}
       <div className="bg-blue-600 text-center text-[11px] md:text-xs py-2 font-semibold px-2">
@@ -254,7 +259,7 @@ export default function PCBuilderWebsite() {
           <input className="w-full p-3 bg-zinc-800 rounded-lg" name="name" placeholder="Name" />
           <input className="w-full p-3 bg-zinc-800 rounded-lg" name="email" placeholder="Email" />
           <input className="w-full p-3 bg-zinc-800 rounded-lg" name="budget" placeholder="Budget" />
-          <textarea className="w-full p-3 bg-zinc-800 rounded-lg" name="message" placeholder="What do you want built?" rows="5" />
+         <textarea className="w-full p-3 bg-zinc-800 rounded-lg" name="message" placeholder="What do you want built?" rows={5} />
 
           <button className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-semibold">
             Send Request
