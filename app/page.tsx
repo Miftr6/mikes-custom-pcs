@@ -221,6 +221,25 @@ Thank you.`
           </div>
         ))}
       </section>
+{/* Custom Build Request Section */}
+<section id="contact" className="max-w-3xl mx-auto px-6 pb-24 text-center">
+  <h3 className="text-3xl font-bold mb-4">
+    Request a Custom PC
+  </h3>
+
+  <p className="text-zinc-400 mb-6">
+    Don’t see what you want? Send a custom build request and I’ll spec it for you.
+  </p>
+
+  <a
+    href={`mailto:${contactEmail}?subject=${encodeURIComponent(
+      "Custom PC Build Request"
+    )}`}
+    className="inline-block bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-semibold"
+  >
+    Email Custom Build Request
+  </a>
+</section>
 
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-8 text-center text-sm text-zinc-500">
