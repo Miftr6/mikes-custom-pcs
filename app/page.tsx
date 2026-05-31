@@ -144,12 +144,13 @@ export default function PCBuilderWebsite() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <h2 className="text-5xl font-bold mb-4">
-          Custom Built Gaming PCs
+          Custom Built Gaming PCs — AM4 & AM5
         </h2>
 
         <p className="text-zinc-400 max-w-2xl text-lg">
-          Professionally assembled gaming computers with clean cable management,
-          quality components, and fast turnaround times.
+          Custom built gaming PCs geaturing AMD Eyzen and Radeon Or NVIDIA graphics.
+          Every build includes professional labor, full stress testing, clean cable
+          managments, and fast turnaround. Shipping is separate due to location.
         </p>
       </section>
 
